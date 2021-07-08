@@ -94,6 +94,7 @@ class kratosCertificateBot:
         doc_ref = db.collection(u'Kratians').document(u'{}'.format(documentID))
         doc = doc_ref.get()
         person = doc.to_dict()
+        print("Created certificate for ", person['Name'], "...")
         self.createCertificate(person)
 
     def createMultipleCertificate(self, team):
@@ -114,7 +115,8 @@ if __name__ == "__main__":
     except Exception as e:
         print("ERROR: Unable to Initialize the Firestore Client: {}".format(e))
 
-    add_to_database(db)
+    #add_to_database(db)
 
-    #bot = kratosCertificateBot(template_path='files/Certificate_Template_2021.png')
+    bot = kratosCertificateBot(template_path='files/Certificate_Template_2021.png')
+    bot.createSingleCertificate(documentID = 'f20190336@goa')
     #bot.createMultipleCertificate(team = 2022)
