@@ -2,10 +2,15 @@ from PIL import Image, ImageDraw, ImageFont
 import os
 import pandas as pd
 
+import firebase_admin
+from firebase_admin import credentials, firestore
+
 import qrcode
 
+from fire import add_to_database
+
 class kratosCertificateBot:
-    def __init__(self, template_path='files/Certificate_Template_2022.png', font_dir='files'):
+    def __init__(self, template_path, font_dir='files'):
 
         #Fonts & sizes
         self.name_font = ImageFont.truetype(os.path.join(font_dir, "CooperHewitt-Semibold.otf"), 140)
@@ -53,15 +58,64 @@ class kratosCertificateBot:
         self.add_QR(qr_data)
         self.export_certificate(output_dir, fname)
 
+    def createCertificate(self, person):
+        if 'lead' in person['PoR(s)'][0].lower() or 'head' in person['PoR(s)'][0].lower():
+            type_of_cert = u'CERTIFICATE OF LEADERSHIP'
+            if person['Member status'] == u'Yes':
+                description = u'is "{}" of Project Kratos'.format(person['PoR(s)'][0])
+                date = u'for AY {}-{}'.format(person['Team']-1, person['Team'])
+            else:
+                description = 'was "{}" of Project Kratos'.format(person['PoR(s)'][0])
+                date = u'for AY {}-{}'.format(person['Team']-1, person['Team'])
+        else: 
+            type_of_cert = u'CERTIFICATE OF Membership'
+            if person['Member status'] == u'Yes':
+                description = u'is "{}" in {} Subsystem of Project Kratos'.format(person['PoR(s)'][0], person['Subsystem'])
+                date = u'for AY {}-Present'.format(person['Team']-2)
+            else:
+                description = u'was "{}" in {} Subsystem of Project Kratos'.format(person['PoR(s)'][0], person['Subsystem'])
+                date = u'for AY {}-{}'.format(person['Team']-2, person['End'][-2:])
+
+        if person['Sex'] == "Male":
+            name = "Mr. " + person['Name']
+        else:
+            name = "Ms. " + person['Name']
+
+        self.run(
+            name = name,
+            description = description,
+            date = date,
+            type = type_of_cert,
+            qr_data = 'CertificateID: ' + person['Certificate ID'] + ' - Verify at: https://Kratos-The-Rover.github.io/verify',
+            output_dir = 'files/certificates/{}/{}'.format(person['Team'], person['Subsystem']),
+            fname = '{}_{}.png'.format(person['Name'], person['Certificate ID'][7:])
+        )
+
+    def createSingleCertificate(self, documentID):
+        doc_ref = db.collection(u'Kratians').document(u'{}'.format(documentID))
+        doc = doc_ref.get()
+        person = doc.to_dict()
+        self.createCertificate(person)
+
+    def createMultipleCertificate(self, team):
+        docs = db.collection(u'Kratians').where(u'Team', u'==', team).stream()
+        for doc in docs:
+            print(f'Creating certificate for {doc.id}')
+            person = doc.to_dict()
+            self.createCertificate(person)
+
+
 
 if __name__ == "__main__":
-    bot = kratosCertificateBot()
-    bot.run(
-        name = 'Mr. John',
-        description = 'is "Random Subsystem Lead" of Project Kratos',
-        date = 'for AY 2021-22',
-        type = 'CERTIFICATE OF LEADErSHIP',
-        qr_data = 'h0iehwken0v0weklwmnds[',
-        output_dir = 'files/certificates',
-        fname = 'johndoe.png'
-    )
+
+    try:
+        cred = credentials.Certificate('files/serviceKey.json')
+        firebase_admin.initialize_app(cred)
+        db = firestore.client()
+    except Exception as e:
+        print("ERROR: Unable to Initialize the Firestore Client: {}".format(e))
+
+    add_to_database(db)
+
+    #bot = kratosCertificateBot(template_path='files/Certificate_Template_2021.png')
+    #bot.createMultipleCertificate(team = 2022)
