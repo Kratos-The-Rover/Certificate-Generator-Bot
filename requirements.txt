@@ -2,3 +2,4 @@ pandas
 qrcode
 pillow
 requests
+firebase_admin
