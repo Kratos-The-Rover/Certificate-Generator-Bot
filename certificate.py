@@ -5,11 +5,11 @@ import pandas as pd
 import qrcode
 
 class kratosCertificateBot:
-    def __init__(self, template_path='files/Certificate_Template.png', font_dir='files'):
+    def __init__(self, template_path='files/Certificate_Template_2022.png', font_dir='files'):
 
         #Fonts & sizes
         self.name_font = ImageFont.truetype(os.path.join(font_dir, "CooperHewitt-Semibold.otf"), 140)
-        self.description_font = ImageFont.truetype(os.path.join(font_dir, "HKGrotesk-Medium.ttf"), 60)
+        self.description_font = ImageFont.truetype(os.path.join(font_dir, "HKGrotesk-Medium.ttf"), 50)
         self.year_font = ImageFont.truetype(os.path.join(font_dir, "HKGrotesk-Medium.ttf"), 50)
         self.banner_font = ImageFont.truetype(os.path.join(font_dir, "HKGrotesk-Bold.ttf"), 50)
 
@@ -20,7 +20,7 @@ class kratosCertificateBot:
         self.qr = qrcode.QRCode(
                                 version=1,
                                 error_correction=qrcode.constants.ERROR_CORRECT_L,
-                                box_size=10,
+                                box_size=7,
                                 border=2,
                             )
 
@@ -41,22 +41,27 @@ class kratosCertificateBot:
         QR = self.qr.make_image(fill_color="black", back_color="white")
         self.template.paste(QR, (145, 965))
 
-    def export_certificate(self, path):
-        self.template.save(path, quality=100)
+    def export_certificate(self, path, fname):
+        if not os.path.exists(path):
+            os.makedirs(path)
+        #print(os.path.join(path, fname))
+        #self.template.show()
+        self.template.save(os.path.join(path, fname), quality=100)
 
-    def run(self, name, description, date, type, qr_data, output_path):
+    def run(self, name, description, date, type, qr_data, output_dir, fname):
         self.draw_text(name, description, date, type)
         self.add_QR(qr_data)
-        self.export_certificate(output_path)
+        self.export_certificate(output_dir, fname)
 
 
 if __name__ == "__main__":
     bot = kratosCertificateBot()
     bot.run(
-        name = 'Mr. John Doe',
+        name = 'Mr. John',
         description = 'is "Random Subsystem Lead" of Project Kratos',
         date = 'for AY 2021-22',
         type = 'CERTIFICATE OF LEADErSHIP',
         qr_data = 'h0iehwken0v0weklwmnds[',
-        output_path = 'files/certificates/johndoe.png'
+        output_dir = 'files/certificates',
+        fname = 'johndoe.png'
     )
