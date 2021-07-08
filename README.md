@@ -10,4 +10,4 @@ A simple python script to generate certificates with QR Code in a loop. QR Codes
 - Create a ```/files``` folder in the same directory and add all the .png and font files
 - Make sure python is installed
 - ```pip install -r requirements.txt```
-- ```certificate.py has the necessary functions to generate a certificate, modify it according to your needs.
+- ```certificate.py``` has the necessary functions to generate a certificate, modify it according to your needs.
