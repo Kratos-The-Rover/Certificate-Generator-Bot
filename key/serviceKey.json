@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "kratos-the-rover",
+  "private_key_id": "04bab7d03418df8d2666d5a1f3550d7c65f2857d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDtdCjYrzVhmT8V\nj9etPVagCQyAKiQeBGCRZqISMmjSgBDzbNGXpnXpY+RJfYg5EmJmwuImTHUj95zN\nyRuwWABaT3PXIX37Vm0BRcZ/mOVg6lR/0wgwJOppa/eQgtBJdgXvOU5fp5avi2nI\nsqHCYb7xtN6FdKMBGPkYUeeRvWLwpSYhhM/utvMsAIdu1T9crsUeH0plFnedsVtQ\n3x7sc3qNJf1IQPU3FbQRRE7I4Qq2l0g0Uv3obknZQNKUpiUzr65qKmdFK9fwwANy\nXtxaFGys2VvA5XOjKQsSzfba4zioJG0HLyfWKXdTX+7/ZPjJZcNfiLZW71jlFqEW\nFmlT+RLxAgMBAAECggEACRJ7U14MVXyFUmr9aUcdlb3gGPnN3p9kW3choZLZ+j2T\niDgOi5378CJq0Nuni6YAwEmEBO++Y6pR9sh50u4QeLguO5hcvRsoooK6ilpP3I5P\naKvU1Va6ZbPkO0Si4G+j2zzkBO0SVDDTe5bG7eDjVU5HrdnOjDFFURvN/mg54mpG\nDB1CyvTc+DOav7TLfzsmJCk9ipd8V1du8B1mxFc1bvADHxGG/F/bZp4IlG9M8Bb7\ndp6ZiHIijnMJBEchPbDG6WURohGDbPgKOJH7SqkRfaN5imtmOXWNXlHXV7w1WLgh\n7fBDR+FrSHevVKiuz6HyZ1bI3w8I9cVkVIQrL8hFkQKBgQD9Xq+VFmIDkF8B+8i8\nIgvkNe5Rec0zxulRijWbF7woBytyqbIqeP4adjNICwNUM565HaIMxdFSIMEQ5/ta\nvJMLtA1RFDkbwsCpNZG59lSbRnrsMz8HA7Eo+otm9cb+E/ECCF0LQBnqLT3GgZWG\noySDdaNsV6qOlb2tVkkYzbYR6QKBgQDv6y146p3kQt7lU73yMv71ZDQJLxGEXrcb\nIFWa7e3hw3Bbu/Hu+JblAG97+tsX4XUMKyzgBb0hX/MygbhPZ2heKLfKK53imR0/\nKrFSep08p2Nvid+UJQIAUdnIo4bW7ZPf4eAwl+6HON0XGeDHU1eCOJWDEB9PFpOv\n5Z0ji0ALyQKBgQDJC/AhSgB+OXnaFhODjTSIYm73wcGdWzHaXOQKa/wGeyHzu0m/\nwABJuQ8aFHsQvmEtHKFwpytgktL/+kQODOJVgAqtEnH6YEAGRJaczCT4jSWO9V8G\nztwt2xjwmwfKpsIvzbke6z9k/X8uW7btfdjEY31IxAt3VsSKnZQlFV5quQKBgB1G\niETx9BRPaJ15K3trZ5sQAB2CxdNuL0+7EVcXY2iiDYrUE0CCyv7kn7X0NVnjpAG5\nHv+zE5IIAEgQdioSRzT+KPcdfWWSI3R6xCp5Vch58HNC0qpkHatmUXnfImwFj37J\nNC8ZyvxrHudbvAb2j34PY4cbp4ZiDeFv1k3pBwapAoGBAPNrNwl1RjBOzPaXFL8E\nzucYdhR2joxppDK4pffnyWHYhpoOdJeJAneTkwzapElxaUO05efshyNPNs/1B/hL\na3zygQ961VREZHSmaAVQZ00l0RsTXIt5EK0gWqTOAcscFD7F+eam9ashL7J8i3mo\nY5lyF2R/yRqX2gZBDtGlzIjx\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-jmczs@kratos-the-rover.iam.gserviceaccount.com",
+  "client_id": "117599301254728949877",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-jmczs%40kratos-the-rover.iam.gserviceaccount.com"
+}

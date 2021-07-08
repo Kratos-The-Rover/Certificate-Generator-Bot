@@ -16,6 +16,7 @@ class kratosCertificateBot:
         #Certificate template path
         self.template = Image.open(template_path)
 
+        #Configure the size and border, etc., of the QR Code
         self.qr = qrcode.QRCode(
                                 version=1,
                                 error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -26,6 +27,7 @@ class kratosCertificateBot:
     def draw_text(self, name, description, date, type):
         certificate = ImageDraw.Draw(self.template)
 
+        #Adjust the coordinates and fields accordingly
         certificate.text(xy=(210, 570), text=name, fill = (255, 255, 255), font=self.name_font)
         certificate.text(xy=(210, 710), text=description, fill = (255, 255, 255), font=self.description_font)
         certificate.text(xy=(210, 780), text=date, fill = (255, 255, 255), font=self.year_font)
@@ -56,5 +58,5 @@ if __name__ == "__main__":
         date = 'for AY 2021-22',
         type = 'CERTIFICATE OF LEADErSHIP',
         qr_data = 'h0iehwken0v0weklwmnds[',
-        output_path = 'johndoe.png'
+        output_path = 'files/certificates/johndoe.png'
     )
